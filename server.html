@@ -6,11 +6,11 @@
   <title>Server Stat</title>
   <link rel="icon" type="image/svg+xml" href="./icon's/icon.svg">
   <link rel="stylesheet" href="./style/style.css">
-  <script type="text/javascript" src="app.js" defer></script>
   <style>
     /* Define the color variables */
     :root {
         --accent-clr: #5e63ff;
+        --line-clr: #42434a;
         --base-clr: #11121a;
     }
 
@@ -27,59 +27,58 @@
         background-color: var(--base-clr);
         color: #ffffff;
         padding: 20px;
+        line-height: 1.6;
+    }
+
+    /* Main Container Styling */
+    main {
+        max-width: 1200px;
+        margin: auto;
     }
 
     /* Container Styling */
     .container {
-        background-color: var(--base-clr);
-        border: 2px solid var(--accent-clr);
-        border-radius: 8px;
-        padding: 20px;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--line-clr);
+      border-radius: 10px; /* Updated to match the card's border-radius */
+      margin: 0 auto 20px; /* Combined margin settings */
+      padding: min(3em, 15%);
+      background: #1c1f2b; /* Added from .card */
+      text-align: center; /* Added from .card */
+      position: relative; /* Added from .card */
     }
 
-    .container h2 {
-        color: var(--accent-clr);
-        margin-bottom: 10px;
+    .container:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     }
 
-    .container p {
-        font-size: 16px;
-    }
+    .container::after, .container::before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-image: conic-gradient(from var(--angle), transparent 70%, #6A5ACD); /* Fixed syntax for conic-gradient */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      padding: 3px;
+      border-radius: 10px;
+      animation: spin 3s linear infinite;
+   }
 
-    /* Stats Section Styling */
-    #stats-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+   .container::before {
+     filter: blur(1.5rem);
+     opacity: 0.5;
+   }
 
-    .stat {
-        background-color: var(--base-clr);
-        border: 2px solid var(--accent-clr);
-        border-radius: 8px;
-        padding: 20px;
-        width: 45%;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .stat h3 {
-        color: var(--accent-clr);
-        margin-bottom: 10px;
-    }
-
-    .stat p {
-        font-size: 24px;
-        margin: 0;
-    }
-
-    #clock {
-        font-family: Arial, sans-serif;
-        font-size: 2em;
-        color: #333;
-    }
+   @keyframes spin {
+     from {
+       --angle: 0deg;
+     }
+     to {
+       --angle: 360deg;
+     }
+   }
    </style>
 </head>
 <body>
@@ -143,12 +142,12 @@
     </ul>
   </nav>
   <main>
-    <div id="stats-container">
-        <div class="stat">
+    <div id="container">
+        <div class="container">
             <h3>Servers</h3>
             <p id="server-count">436</p>
         </div>
-        <div class="stat">
+        <div class="container">
             <h3>Days Since Launch</h3>
             <p id="days-since-launch">0</p>
         </div>

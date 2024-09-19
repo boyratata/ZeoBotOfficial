@@ -133,13 +133,14 @@ main p{
   margin-top: 5px;
   margin-bottom: 15px;
 }
-.container{
+.container {
   border: 1px solid var(--line-clr);
-  border-radius: 1em;
-  margin-bottom: 20px;
+  border-radius: 10px; /* Updated to match the card's border-radius */
+  margin: 0 auto 20px; /* Combined margin settings */
   padding: min(3em, 15%);
-
-  h2, p { margin-top: 1em }
+  background: #1c1f2b; /* Added from .card */
+  text-align: center; /* Added from .card */
+  position: relative; /* Added from .card */
 }
 
 @media(max-width: 800px){
@@ -232,3 +233,40 @@ main p{
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.9); /* Darker thumb color on hover */
 }
+
+/* Custom property definition for --angle */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.container::after, .container::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), transparent 70%, #6A5ACD); /* Fixed syntax for conic-gradient */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+  animation: spin 3s linear infinite;
+}
+
+.container::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+

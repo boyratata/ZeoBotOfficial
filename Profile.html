@@ -10,6 +10,7 @@
   <style>
     :root {
       --base-clr: #11121a;
+      --line-clr: #42434a;
       --accent-clr: #5e63ff;
     }
 
@@ -19,15 +20,9 @@
       font-family: Arial, sans-serif;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
     .profile-section, .first-users-section, .owner-section {
       background-color: #1e1f29;
-      border: 1px solid var(--accent-clr);
+      border: 1px solid var(--line-clr);
       border-radius: 8px;
       margin-bottom: 20px;
       padding: 15px;
@@ -50,6 +45,17 @@
 
     .profile-details p, .owner-info p {
       margin: 5px 0;
+    }
+
+    .container {
+      border: 1px solid var(--line-clr);
+      border-radius: 10px;
+      margin: 20px auto;
+      padding: 2em;
+      background: #1c1f2b;
+      text-align: center;
+      position: relative;
+      box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.6);
     }
   </style>
 </head>
@@ -115,11 +121,11 @@
   </nav>
   <main>
     <div class="container">
-      <div id="user-profile" class="profile-section">
+      <div id="user-profile" class="container">
         <h2>Your Profile</h2>
         <div class="profile-info">
           <div class="profile-image">
-            <img id="user-avatar" src="./Profile/lebronjames.jpg" alt="User Avatar" class="profile-avatar">
+            <img id="user-avatar" src="./Profile/lebronjames.jpg" alt="User Avatar" class="container">
           </div>
           <div class="profile-details">
             <p><strong>Username:</strong> <span id="Ohballs">F</span></p>
@@ -129,13 +135,12 @@
         </div>
       </div>       
 
-      <div id="first-users-section" class="first-users-section">
-        <h2>First Users</h2>
-        <div id="first-user-profile" class="profile-section">
+      <div>
+        <div id="first-user-profile" class="container">
           <h3>First User</h3>
           <div class="profile-info">
             <div class="profile-image">
-              <img id="first-user-avatar" src="./profile/altan.png" alt="First User Avatar" class="profile-avatar">
+              <img id="first-user-avatar" src="./profile/altan.png" alt="First User Avatar" class="container">
             </div>
             <div class="profile-details">
               <p><strong>Username:</strong> <span id="first-username">Altan</span></p>
@@ -143,11 +148,11 @@
             </div>
           </div>
         </div>
-        <div id="second-user-profile" class="profile-section">
+        <div id="second-user-profile" class="container">
           <h3>Second User</h3>
           <div class="profile-info">
             <div class="profile-image">
-              <img id="second-user-avatar" src="./Profile/bella.png" alt="Second User Avatar" class="profile-avatar">
+              <img id="second-user-avatar" src="./Profile/bella.png" alt="Second User Avatar" class="container">
             </div>
             <div class="profile-details">
               <p><strong>Username:</strong> <span id="second-username">Meta Bella</span></p>
@@ -157,10 +162,10 @@
         </div>
       </div>
   
-      <div id="owner-profile" class="owner-section">
+      <div id="owner-profile" class="container">
         <h2>Owner</h2>
         <div class="owner-info">
-          <img src="./Profile/Admin.png" alt="Owner Avatar" class="owner-avatar">
+          <img src="./Profile/Admin.png" alt="Owner Avatar" class="container">
           <p><strong>Owner:</strong> <span id="owner-username">AdminZero</span></p>
           <p><strong>Discord ID:</strong> <span id="owner-id">1218777412364406906</span></p>
         </div>
