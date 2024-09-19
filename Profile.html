@@ -77,7 +77,7 @@
             <img id="user-avatar" src="./Profile/lebronjames.jpg" alt="User Avatar" class="container">
           </div>
           <div class="profile-details">
-            <p><strong>Username:</strong> <span id="Ohballs">your connection suck</span></p>
+            <p><strong>Username:</strong> <span id="Ohballs"></span></p>
             <p><strong>Discord ID:</strong> <span id="ID"></span></p>
             <p><strong>Join Date:</strong> <span id="join-date">Today</span></p>
           </div>
@@ -121,6 +121,65 @@
       </div>
     </div>
   </main>
- <script type="text/javascript" src="./script/script.js" defer></script>
+  <script>
+        function generateRandomId() {
+            const min = 1000000000;
+            const max = 9999999999;
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        let usernames = [];
+        let currentIndex = 0;
+
+        async function getUsernames() {
+            try {
+                const response = await fetch('./script/usernames.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                usernames = data.usernames;
+
+                if (!usernames || usernames.length === 0) {
+                    throw new Error('No usernames found in the data.');
+                }
+
+                shuffleArray(usernames);
+                currentIndex = 0;
+                displayNextUsername();
+            } catch (error) {
+                console.error('Error fetching usernames:', error);
+            }
+        }
+
+        function displayNextUsername() {
+            if (usernames.length === 0) return;
+
+            const usernameElement = document.getElementById('Ohballs');
+            if (usernameElement) {
+                usernameElement.textContent = usernames[currentIndex];
+            }
+
+            currentIndex = (currentIndex + 1) % usernames.length;
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const discordIdElement = document.getElementById('ID');
+            if (discordIdElement) {
+                discordIdElement.textContent = generateRandomId();
+            }
+
+            getUsernames();
+            setInterval(displayNextUsername, 5000);
+        });
+  </script>
 </body>
 </html>
