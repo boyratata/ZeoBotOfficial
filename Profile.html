@@ -5,59 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile</title>
   <link rel="icon" type="image/svg+xml" href="./icon's/icon.svg">
-  <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="./style/styleX.css">
   <script type="text/javascript" src="app.js" defer></script>
-  <style>
-    :root {
-      --base-clr: #11121a;
-      --line-clr: #42434a;
-      --accent-clr: #5e63ff;
-    }
-
-    body {
-      background-color: var(--base-clr);
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
-
-    .profile-section, .first-users-section, .owner-section {
-      background-color: #1e1f29;
-      border: 1px solid var(--line-clr);
-      border-radius: 8px;
-      margin-bottom: 20px;
-      padding: 15px;
-    }
-
-    h2, h3 {
-      color: var(--accent-clr);
-    }
-
-    .profile-info {
-      display: flex;
-      align-items: center;
-    }
-
-    .profile-image img, .owner-info img {
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-    }
-
-    .profile-details p, .owner-info p {
-      margin: 5px 0;
-    }
-
-    .container {
-      border: 1px solid var(--line-clr);
-      border-radius: 10px;
-      margin: 20px auto;
-      padding: 2em;
-      background: #1c1f2b;
-      text-align: center;
-      position: relative;
-      box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.6);
-    }
-  </style>
 </head>
 <body>
   <nav id="sidebar">
@@ -120,7 +69,7 @@
     </ul>
   </nav>
   <main>
-    <div class="container">
+    <div class="bontainer">
       <div id="user-profile" class="container">
         <h2>Your Profile</h2>
         <div class="profile-info">
@@ -128,7 +77,7 @@
             <img id="user-avatar" src="./Profile/lebronjames.jpg" alt="User Avatar" class="container">
           </div>
           <div class="profile-details">
-            <p><strong>Username:</strong> <span id="Ohballs">F</span></p>
+            <p><strong>Username:</strong> <span id="Ohballs">your connection suck</span></p>
             <p><strong>Discord ID:</strong> <span id="ID"></span></p>
             <p><strong>Join Date:</strong> <span id="join-date">Today</span></p>
           </div>
@@ -140,7 +89,7 @@
           <h3>First User</h3>
           <div class="profile-info">
             <div class="profile-image">
-              <img id="first-user-avatar" src="./profile/altan.png" alt="First User Avatar" class="container">
+              <img id="first-user-avatar" src="./Profile/altan.png" alt="First User Avatar" class="container">
             </div>
             <div class="profile-details">
               <p><strong>Username:</strong> <span id="first-username">Altan</span></p>
@@ -170,34 +119,8 @@
           <p><strong>Discord ID:</strong> <span id="owner-id">1218777412364406906</span></p>
         </div>
       </div>
-      
-      <p id="welcome-message"></p>
     </div>
   </main>
-  <script>
-    function generateRandomId() {
-      return Math.floor(Math.random() * 9000000000) + 1000000000;
-    }
-  
-    document.addEventListener('DOMContentLoaded', () => {
-      const discordIdElement = document.getElementById('ID');
-      discordIdElement.textContent = generateRandomId();
-    });
-  
-    async function getRandomUsername() {
-      try {
-        const response = await fetch('usernames.json');
-        const data = await response.json();
-        const usernames = data.usernames;
-        const randomIndex = Math.floor(Math.random() * usernames.length);
-        const randomUsername = usernames[randomIndex];
-        document.getElementById('Ohballs').textContent = randomUsername;
-      } catch (error) {
-        console.error('Error fetching usernames:', error);
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', getRandomUsername);
-  </script>
+ <script type="text/javascript" src="./script/script.js" defer></script>
 </body>
 </html>
